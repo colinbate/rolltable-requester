@@ -1,0 +1,48 @@
+.rolltable-requester-card {
+  font-size: 12px;
+}
+
+.rolltable-requester-card header {
+  padding: 3px 0;
+  border-top: 2px groove #FFF;
+  border-bottom: 2px groove #FFF;
+}
+
+.rolltable-requester-card p {
+  user-select: text;
+}
+
+.rolltable-requester-card header img {
+  flex: 0 0 36px;
+  margin-right: 5px;
+}
+
+.rolltable-requester-card header .rr-table-name {
+  flex: 1;
+  margin: 0;
+  line-height: 36px;
+  font-family: 'Modesto Condensed', 'Palatino Linotype', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4b4a44;
+}
+
+.rolltable-requester-card .my {
+  margin: 5px 0;
+}
+
+.rolltable-requester-card button {
+  font-size: 12px;
+  height: 24px;
+  line-height: 20px;
+  margin: 2px 0;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px groove #eeede0;
+}
+
+.rolltable-requester-card .footer {
+  border-top: 2px groove #FFF;
+  font-size: 12px;
+  padding-top: 4px;
+  margin-bottom: 0;
+}

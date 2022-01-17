@@ -1,3 +1,5 @@
 {
-    "MODULE.hello": "hello"
+    "RolltableRequester.RequestPrompt": "Can someone roll a result from this random table?",
+    "RolltableRequester.RequestButton": "Let's Get Random!",
+    "RolltableRequester.PlayerThanks": "Thanks [PLAYER]"
 }

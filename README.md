@@ -1,71 +1,42 @@
-![](https://img.shields.io/badge/Foundry-v0.8.6-informational)
+![](https://img.shields.io/badge/Foundry-v9-informational)
 <!--- Downloads @ Latest Badge -->
 <!--- replace <user>/<repo> with your username/repository -->
 <!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/module.zip) -->
 
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-module-name> with the `name` in your manifest -->
-<!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-module-name>&colorB=4aa94a) -->
+# Rolltable Requester
+
+Rolltables (or rollable tables, or random tables) are a great way to fuel ideas and add a bit of randomness to your games. They are often used ahead of time to set up a session or as part of world building. However they are also sometimes used directly within a game. The issue with rolling on a roll table in Foundry is that accessing them as players is awkward.
+
+This module makes it easier to use rolltables during your game and involve your players. If you want to give your players Observer access to your tables so they can open them and roll on them, then you don't need this module. If you want then to be able to roll but not see the full list (or even the result), then this may be the module you are looking for. *waves hand like a Jedi*
+
+## Features
+
+Adds options to the context (right-click) menu of the rolltables:
+- Make Roll
+  - Performs the roll in public and displays the results to GM only.
+- Request Named Roll
+  - Displays a chat card with button asking a player to click it to roll on a the table which is named. When they click it, the roll happens just as with the 'Make Roll' option.
+- Request Blind Roll
+  - Displays the same chat card prompt, but without the name of the table.
 
 
-# How to use this Template to create a versioned Release
+Provides API access to making and requesting rolls above, so you can add them to macros.
 
-1. Open your repository's releases page.
+If you give Limited access to a roll table to a player, they can access the 'Make Roll' option, providing a self service way for them to roll without being able to see the full list of options.
 
-![Where to click to open repository releases.](https://user-images.githubusercontent.com/7644614/93409301-9fd25080-f864-11ea-9e0c-bdd09e4418e4.png)
+## API
 
-2. Click "Draft a new release"
+The following functions are available:
 
-![Draft a new release button.](https://user-images.githubusercontent.com/7644614/93409364-c1333c80-f864-11ea-89f1-abfcb18a8d9f.png)
+```js
+// Only option is setting { blind: true }.
+RolltableRequester.requestRollById(tableId, opts);
+RolltableRequester.requestRollByName(tableName, opts);
 
-3. Fill out the release version as the tag name.
-
-If you want to add details at this stage you can, or you can always come back later and edit them.
-
-![Release Creation Form](https://user-images.githubusercontent.com/7644614/93409543-225b1000-f865-11ea-9a19-f1906a724421.png)
-
-4. Hit submit.
-
-5. Wait a few minutes.
-
-A Github Action will run to populate the `module.json` and `module.zip` with the correct urls that you can then use to distribute this release. You can check on its status in the "Actions" tab.
-
-![Actions Tab](https://user-images.githubusercontent.com/7644614/93409820-c1800780-f865-11ea-8c6b-c3792e35e0c8.png)
-
-6. Grab the module.json url from the release's details page.
-
-![image](https://user-images.githubusercontent.com/7644614/93409960-10c63800-f866-11ea-83f6-270cc5d10b71.png)
-
-This `module.json` will only ever point at this release's `module.zip`, making it useful for sharing a specific version for compatibility purposes.
-
-7. You can use the url `https://github.com/<user>/<repo>/releases/latest/download/module.json` to refer to the manifest.
-
-This is the url you want to use to install the module typically, as it will get updated automatically.
-
-# How to List Your Releases on Package Admin
-
-To request a package listing for your first release, go to the [Package Submission Form](https://foundryvtt.com/packages/submit) (accessible via a link at the bottom of the "[Systems and Modules](https://foundryvtt.com/packages/)" page on the Foundry website).
-
-Fill in the form. "Package Name" must match the name in the module manifest.  Package Title will be the display name for the package.  Package URL should be your repo URL.
-![image](https://user-images.githubusercontent.com/36359784/120664263-b49e5500-c482-11eb-9126-af7006389903.png)
-
-
-One of the Foundry staff will typically get back to you with an approval or any further questions within a few days, and give you access to the package admin pages.
-
-Once you have access to the [module admin page](https://foundryvtt.com/admin/packages/package/), you can release a new version by going into the page for your module, scrolling to the bottom, and filling in a new Package Version.
-
-When listing a new version, Version should be the version number you set above, and the Manifest URL should be the manifest __for that specific version__ (do not use /latest/ here).
-![image](https://user-images.githubusercontent.com/36359784/120664346-c4b63480-c482-11eb-9d8b-731b50d70939.png)
-
-> ### :warning: Important :warning:
-> 
-> It is very important that you use the specific release manifest url, and not the `/latest` url here. For more details about why this is important and how Foundry Installs/Updates packages, read [this wiki article](https://foundryvtt.wiki/en/development/guides/releases-and-history).
-
-Clicking "Save" in the bottom right will save the new version, which means that anyone installing your module from within Foundry will get that version, and a post will be generated in the #release-announcements channel on the official Foundry VTT Discord.
-
-
-# FoundryVTT Module
-
-Does something, probably
+RolltableRequester.makeRollById(tableId);
+RolltableRequester.makeRollByName(tableName);
+```
 
 ## Changelog
+
+See the Releases page for notes for each version.
