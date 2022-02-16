@@ -1,0 +1,5 @@
+{
+    "RolltableRequester.RequestPrompt": "Kann bitte jemand einen Wurf gegen diese Tabelle ausführen?",
+    "RolltableRequester.RequestButton": "Würfeln!",
+    "RolltableRequester.PlayerThanks": "Vielen Dank, [PLAYER]!"
+}
