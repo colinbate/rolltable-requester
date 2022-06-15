@@ -1,7 +1,5 @@
 ![](https://img.shields.io/badge/Foundry-v9-informational)
-<!--- Downloads @ Latest Badge -->
-<!--- replace <user>/<repo> with your username/repository -->
-<!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/module.zip) -->
+![Latest Release Download Count](https://img.shields.io/github/downloads/colinbate/rolltable-requester/latest/module.zip)
 
 # Rolltable Requester
 

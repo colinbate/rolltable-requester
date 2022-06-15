@@ -5,7 +5,7 @@ const WHISPER_FN = 'cheekyWhisper';
 let socket;
 
 async function rolltableRequesterMakeRoll(table) {
-  const { formula } = table.data;
+  const formula = table.formula ?? table.data.formula;
   const pRoll = new Roll(formula);
   const die = await pRoll.roll({ async: true });
   await pRoll.toMessage({}, {
@@ -21,7 +21,7 @@ async function rolltableRequesterMakeRoll(table) {
     thumbnail: table.thumbnail,
     total: die.total,
     user,
-    content: results[0].data.text
+    content: results[0].text ?? results[0].data.text
   });
   const drawChatData = {
       content: myHtml,
@@ -97,22 +97,23 @@ Hooks.once('ready', async function() {
 });
 
 Hooks.on('getRollTableDirectoryEntryContext', async function(_, entries) {
-  const requestNamedRoll = 'Request Named Roll';
-  if (entries.some(e => e.name === requestNamedRoll)) {
+  const menuId = 'rolltable-requester';
+  if (entries.some(e => e.menuId === menuId)) {
     return;
   }
   // Add entries at the top.
   entries.unshift({
-    name: 'Make Roll',
+    menuId,
+    name: game.i18n.localize('RolltableRequester.MenuMakeRoll'),
     icon: '<i class="fas fa-dice-d20"></i>',
     callback: (target) => makeRollById(target.data('document-id')),
   }, {
-    name: requestNamedRoll,
+    name: game.i18n.localize('RolltableRequester.MenuRequestRoll'),
     icon: '<i class="fas fa-question-circle"></i>',
     condition: game.user.isGM,
     callback: (target) => requestRollById(target.data('document-id')),
   }, {
-    name: 'Request Blinded Roll',
+    name: game.i18n.localize('RolltableRequester.MenuRequestBlindRoll'),
     icon: '<i class="fas fa-eye-slash"></i>',
     condition: game.user.isGM,
     callback: (target) => requestRollById(target.data('document-id'), { blind: true }),

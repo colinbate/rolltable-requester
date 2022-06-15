@@ -1,5 +1,8 @@
 {
     "RolltableRequester.RequestPrompt": "Can someone roll a result from this random table?",
     "RolltableRequester.RequestButton": "Let's Get Random!",
-    "RolltableRequester.PlayerThanks": "Thanks [PLAYER]"
+    "RolltableRequester.PlayerThanks": "Thanks [PLAYER]",
+    "RolltableRequester.MenuMakeRoll": "Make Roll",
+    "RolltableRequester.MenuRequestRoll": "Request Named Roll",
+    "RolltableRequester.MenuRequestBlindRoll": "Request Blinded Roll"
 }
