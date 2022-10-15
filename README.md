@@ -17,6 +17,8 @@ Adds options to the context (right-click) menu of the rolltables:
   - Displays a chat card with button asking a player to click it to roll on a the table which is named. When they click it, the roll happens just as with the 'Make Roll' option.
 - Request Blind Roll
   - Displays the same chat card prompt, but without the name of the table.
+- Request Descriptive Roll
+  - This is like the named roll except that it will also display the rolltable description.
 
 
 Provides API access to making and requesting rolls above, so you can add them to macros.
@@ -28,7 +30,7 @@ If you give Limited access to a roll table to a player, they can access the 'Mak
 The following functions are available:
 
 ```js
-// Only option is setting { blind: true }.
+// Options = { blind: boolean; description: boolean; }.
 RolltableRequester.requestRollById(tableId, opts);
 RolltableRequester.requestRollByName(tableName, opts);
 
