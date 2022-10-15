@@ -1,10 +1,14 @@
-<div class="rolltable-requester-card" style="font-size: 12px">
+<div class="{{system}} rolltable-requester-card" style="font-size: 12px">
   <header class="card-header flexrow">
     <img src="{{thumbnail}}" title="{{name}}" width="36" height="36">
     <h3 class="rr-table-name">{{name}}</h3>
   </header>
   <div class="my">
-    <p>{{localize 'RolltableRequester.RequestPrompt'}}</p>
+    {{#if description}}
+      {{{description}}}
+    {{else}}
+      <p>{{localize 'RolltableRequester.RequestPrompt'}}</p>
+    {{/if}}
   </div>
   <div class="my">
     <button class="rt-requester" data-tableid="{{tid}}">{{localize 'RolltableRequester.RequestButton'}}</button>

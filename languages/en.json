@@ -4,5 +4,6 @@
     "RolltableRequester.PlayerThanks": "Thanks [PLAYER]",
     "RolltableRequester.MenuMakeRoll": "Make Roll",
     "RolltableRequester.MenuRequestRoll": "Request Named Roll",
-    "RolltableRequester.MenuRequestBlindRoll": "Request Blinded Roll"
+    "RolltableRequester.MenuRequestBlindRoll": "Request Blinded Roll",
+    "RolltableRequester.MenuRequestDescRoll": "Request Descriptive Roll"
 }

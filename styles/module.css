@@ -8,7 +8,8 @@
   border-bottom: 2px groove #FFF;
 }
 
-.rolltable-requester-card p {
+.rolltable-requester-card p,
+.rolltable-requester-card p * {
   user-select: text;
 }
 

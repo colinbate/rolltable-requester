@@ -3,14 +3,14 @@
   "name": "rolltable-requester",
   "title": "Rolltable Requester",
   "description": "Allows players to roll (with dice) on a rolltable upon request.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "library": "false",
-  "manifestPlusVersion": "1.1.1",
+  "manifestPlusVersion": "1.2.0",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "compatibility": {
     "minimum": 9,
-    "verified": "10.277"
+    "verified": "10.288"
   },
   "authors": [
     {
@@ -28,7 +28,7 @@
         "id": "socketlib",
         "type": "module",
         "compatibility": {
-          "verified": "1.0.10"
+          "verified": "1.0.12"
         }
       }
     ]
