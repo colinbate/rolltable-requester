@@ -1,0 +1,11 @@
+{
+    "RolltableRequester.RequestPrompt": "Kan någon slå ett tärningsslag för den här slumptabellen?",
+    "RolltableRequester.RequestButton": "Slå tärningar!",
+    "RolltableRequester.PlayerThanks": "Tack [PLAYER]",
+    "RolltableRequester.MenuMakeRoll": "Slå tärning(ar)",
+    "RolltableRequester.MenuRequestRoll": "Be om tätningsslag - med rubrik",
+    "RolltableRequester.MenuRequestBlindRoll": "Be om tärningsslag - blint",
+    "RolltableRequester.MenuRequestDescRoll": "Be om tärningsslag - detaljerat"
+}
+
+
