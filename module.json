@@ -1,26 +1,19 @@
 {
   "id": "rolltable-requester",
-  "name": "rolltable-requester",
   "title": "Rolltable Requester",
   "description": "Allows players to roll (with dice) on a rolltable upon request.",
   "version": "1.2.0",
-  "library": "false",
-  "manifestPlusVersion": "1.2.0",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
   "compatibility": {
-    "minimum": 9,
+    "minimum": "9",
     "verified": "10.288"
   },
   "authors": [
     {
       "name": "Colin Bate",
       "url": "https://colin.is",
-      "discord": "colinbate#9292"
+      "discord": "colinbate#9292",
+      "flags": {}
     }
-  ],
-  "dependencies": [
-    { "name": "socketlib" }
   ],
   "relationships": {
     "requires": [
@@ -33,9 +26,6 @@
       }
     ]
   },
-  "conflicts": [
-    
-  ],
   "esmodules": [
     "/scripts/module.js"
   ],
@@ -46,22 +36,32 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "languages/en.json"
+      "path": "languages/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "sv",
+      "name": "Swedish",
+      "path": "languages/sv.json",
+      "flags": {}
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "languages/fr.json"
+      "path": "languages/fr.json",
+      "flags": {}
     }
   ],
   "socket": true,
-  "url": "This is auto replaced",
-  "manifest": "This is auto replaced",
-  "download": "This is auto replaced",
+  "url": "https://github.com/colinbate/rolltable-requester",
+  "manifest": "https://github.com/colinbate/rolltable-requester/releases/latest/download/module.json",
+  "download": "https://github.com/colinbate/rolltable-requester/releases/download/v1.2.0/module.zip",
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4",
+      "loop": false,
+      "flags": {}
     }
   ]
 }
