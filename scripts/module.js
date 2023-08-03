@@ -22,7 +22,8 @@ async function rolltableRequesterMakeRoll(table) {
     total: die.total,
     user,
     system: game.system.id,
-    content: results[0].text ?? results[0].data.text
+    icon: results[0].icon,
+    content: results[0].getChatText ? results[0].getChatText() : results[0].data.text
   });
   const drawChatData = {
       content: myHtml,

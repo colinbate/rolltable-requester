@@ -3,20 +3,21 @@
   "name": "rolltable-requester",
   "title": "Rolltable Requester",
   "description": "Allows players to roll (with dice) on a rolltable upon request.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "library": "false",
-  "manifestPlusVersion": "1.2.0",
+  "manifestPlusVersion": "1.3.0",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "compatibility": {
-    "minimum": 9,
-    "verified": "10.288"
+    "minimum": "9",
+    "verified": "11.307"
   },
   "authors": [
     {
       "name": "Colin Bate",
       "url": "https://colin.is",
-      "discord": "colinbate#9292"
+      "discord": "colinbate",
+      "flags": {}
     }
   ],
   "dependencies": [
@@ -46,12 +47,20 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "languages/en.json"
+      "path": "languages/en.json",
+      "flags": {}
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "languages/fr.json"
+      "path": "languages/fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "sv",
+      "name": "Swedish",
+      "path": "languages/sv.json",
+      "flags": {}
     }
   ],
   "socket": true,
@@ -61,7 +70,9 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4",
+      "loop": false,
+      "flags": {}
     }
   ]
 }

@@ -1,6 +1,3 @@
-.rolltable-requester-card {
-  font-size: 12px;
-}
 
 .rolltable-requester-card header {
   padding: 3px 0;
@@ -33,7 +30,7 @@
 }
 
 .rolltable-requester-card button {
-  font-size: 12px;
+  font-size: var(--font-size-12, 12px);
   height: 24px;
   line-height: 20px;
   margin: 2px 0;
@@ -43,7 +40,14 @@
 
 .rolltable-requester-card .footer {
   border-top: 2px groove #FFF;
-  font-size: 12px;
+  font-size: var(--font-size-12, 12px);
   padding-top: 4px;
   margin-bottom: 0;
+}
+
+.rolltable-requester-card .rr-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
 }
