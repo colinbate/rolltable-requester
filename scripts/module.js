@@ -2,9 +2,35 @@ const MODULE_NAME = 'rolltable-requester';
 const TEMPLATE_PATH = `/modules/${MODULE_NAME}/templates`;
 const WHISPER_FN = 'cheekyWhisper';
 
+const RT_CLASS = 'RollTable';
+const MAX_DEPTH = 10;
+
 let socket;
 
-async function rolltableRequesterMakeRoll(table) {
+async function getDocIfRollTable(tableResult) {
+  if (tableResult.type === CONST.TABLE_RESULT_TYPES.DOCUMENT && tableResult.documentCollection === RT_CLASS) {
+    return game.tables.get(tableResult.documentId);
+  }
+  if (tableResult.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
+    const collection = game.packs.get(tableResult.documentCollection);
+    if (collection && collection.documentClass.name === RT_CLASS) {
+      return await collection.getDocument(tableResult.documentId);
+    }
+  }
+}
+
+// Recusion FTW
+async function getResultFromTable(table, depth = 0, seen = {}) {
+  const opts = { permanent: true, console: true };
+  if (table.id in seen) {
+    ui.notifications.warn('You have a circular reference of tables referencing themselves.', opts);
+    return undefined;
+  }
+  if (depth >= MAX_DEPTH) {
+    ui.notifications.warn('Too many nested roll tables. I think it is time to stop...', opts);
+    return undefined;
+  }
+  seen[table.id] = true;
   const formula = table.formula ?? table.data.formula;
   const pRoll = new Roll(formula);
   const die = await pRoll.roll({ async: true });
@@ -12,18 +38,31 @@ async function rolltableRequesterMakeRoll(table) {
     rollMode: CONFIG.Dice.rollModes.publicroll,
     create: true,
   });
+  const [result] = table.getResultsForRoll(die.total);
+  console.log(`[RTR] Rolled a ${die.total} on ${table.name} (depth ${depth})`);
+  if (!result) { return undefined; }
+  if (result.type === CONST.TABLE_RESULT_TYPES.TEXT) {
+    return result;
+  }
+  const nextTable = await getDocIfRollTable(result);
+  if (nextTable) {
+    return getResultFromTable(nextTable, depth + 1, seen);
+  }
+  return result;
+}
 
-  const results = table.getResultsForRoll(die.total);
+async function rolltableRequesterMakeRoll(table) {
+  const result = await getResultFromTable(table);
+  if (!result) { return; }
   const thanks = game.i18n.localize('RolltableRequester.PlayerThanks');
   const user = thanks.replace(/\[PLAYER\]/g, game.user.name);
   const myHtml = await renderTemplate(`${TEMPLATE_PATH}/result-card.html`, {
     name: table.name,
     thumbnail: table.thumbnail,
-    total: die.total,
     user,
     system: game.system.id,
-    icon: results[0].icon,
-    content: results[0].getChatText ? results[0].getChatText() : results[0].data.text
+    icon: result.icon,
+    content: result.getChatText ? result.getChatText() : result.data.text
   });
   const drawChatData = {
       content: myHtml,
