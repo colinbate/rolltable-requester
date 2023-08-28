@@ -51,3 +51,8 @@
   gap: 8px;
   align-items: center;
 }
+
+.rolltable-requester-card .rr-flex:nth-of-type(n+2) {
+  border-top: 1px solid var(--color-border-light-primary, #4b4a44);
+  padding-top: 5px;
+}

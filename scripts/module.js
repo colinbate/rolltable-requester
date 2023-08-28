@@ -20,15 +20,15 @@ async function getDocIfRollTable(tableResult) {
 }
 
 // Recusion FTW
-async function getResultFromTable(table, depth = 0, seen = {}) {
+async function getResultsFromTable(table, depth = 0, seen = {}) {
   const opts = { permanent: true, console: true };
   if (table.id in seen) {
     ui.notifications.warn('You have a circular reference of tables referencing themselves.', opts);
-    return undefined;
+    return [];
   }
   if (depth >= MAX_DEPTH) {
     ui.notifications.warn('Too many nested roll tables. I think it is time to stop...', opts);
-    return undefined;
+    return [];
   }
   seen[table.id] = true;
   const formula = table.formula ?? table.data.formula;
@@ -38,22 +38,25 @@ async function getResultFromTable(table, depth = 0, seen = {}) {
     rollMode: CONFIG.Dice.rollModes.publicroll,
     create: true,
   });
-  const [result] = table.getResultsForRoll(die.total);
+  const results = table.getResultsForRoll(die.total);
   console.log(`[RTR] Rolled a ${die.total} on ${table.name} (depth ${depth})`);
-  if (!result) { return undefined; }
-  if (result.type === CONST.TABLE_RESULT_TYPES.TEXT) {
+  if (!results) { return []; }
+  return (await Promise.all(results.map(async result => {
+    if (result.type === CONST.TABLE_RESULT_TYPES.TEXT) {
+      return result;
+    }
+    const nextTable = await getDocIfRollTable(result);
+    if (nextTable) {
+      return getResultsFromTable(nextTable, depth + 1, {...seen});
+    }
     return result;
-  }
-  const nextTable = await getDocIfRollTable(result);
-  if (nextTable) {
-    return getResultFromTable(nextTable, depth + 1, seen);
-  }
-  return result;
+  }))).flat();
 }
 
 async function rolltableRequesterMakeRoll(table) {
-  const result = await getResultFromTable(table);
-  if (!result) { return; }
+  const results = await getResultsFromTable(table);
+  console.log(`[RTR] Got results:`, results);
+  if (!results) { return; }
   const thanks = game.i18n.localize('RolltableRequester.PlayerThanks');
   const user = thanks.replace(/\[PLAYER\]/g, game.user.name);
   const myHtml = await renderTemplate(`${TEMPLATE_PATH}/result-card.html`, {
@@ -61,8 +64,10 @@ async function rolltableRequesterMakeRoll(table) {
     thumbnail: table.thumbnail,
     user,
     system: game.system.id,
-    icon: result.icon,
-    content: result.getChatText ? result.getChatText() : result.data.text
+    results: results.map(r => ({
+      icon: r.icon,
+      content: r.getChatText ? r.getChatText() : r.data.text
+    }))
   });
   const drawChatData = {
       content: myHtml,
