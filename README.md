@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/Foundry-v9-informational)
 ![](https://img.shields.io/badge/Foundry-v10-informational)
 ![](https://img.shields.io/badge/Foundry-v11-informational)
+![](https://img.shields.io/badge/Foundry-v12-informational)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/colinbate/rolltable-requester/latest/module.zip)
 
 # Rolltable Requester
