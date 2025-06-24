@@ -1,9 +1,11 @@
 {
-    "RolltableRequester.RequestPrompt": "Un joueur peut-il faire un jet sur cette table ?",
-    "RolltableRequester.RequestButton": "C'est parti !",
-    "RolltableRequester.PlayerThanks": "Merci [PLAYER]",
-    "RolltableRequester.MenuMakeRoll": "Faire un jet",
-    "RolltableRequester.MenuRequestRoll": "Demander un jet sur la table",
-    "RolltableRequester.MenuRequestBlindRoll": "Demander un jet à l'aveugle",
-    "RolltableRequester.MenuRequestDescRoll": "Demander un jet avec la description"
+  "RolltableRequester.RequestPrompt": "Un joueur peut-il faire un jet sur cette table ?",
+  "RolltableRequester.RequestButton": "C'est parti !",
+  "RolltableRequester.PlayerThanks": "Merci [PLAYER]",
+  "RolltableRequester.MenuMakeRoll": "Faire un jet",
+  "RolltableRequester.MenuRequestRoll": "Demander un jet sur la table",
+  "RolltableRequester.MenuRequestBlindRoll": "Demander un jet à l'aveugle",
+  "RolltableRequester.MenuRequestDescRoll": "Demander un jet avec la description",
+  "RolltableRequester.CircularReferenceWarning": "Une référence circulaire a été détectée dans la table",
+  "RolltableRequester.NestedTableDepthWarning": "Trop de tables imbriquées. Je pense que c'est temps de s'arrêter..."
 }

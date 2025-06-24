@@ -5,5 +5,7 @@
   "RolltableRequester.MenuMakeRoll": "Slå tärning(ar)",
   "RolltableRequester.MenuRequestRoll": "Be om tärningsslag - med rubrik",
   "RolltableRequester.MenuRequestBlindRoll": "Be om tärningsslag - blint",
-  "RolltableRequester.MenuRequestDescRoll": "Be om tärningsslag - detaljerat"
+  "RolltableRequester.MenuRequestDescRoll": "Be om tärningsslag - detaljerat",
+  "RolltableRequester.CircularReferenceWarning": "Du har en cirkulär referens av tabeller som refererar till sig själva.",
+  "RolltableRequester.NestedTableDepthWarning": "För många nästlade slumptabeller. Det är nog dags att sluta nu..."
 }
