@@ -61,7 +61,7 @@ async function getResultsFromTable(table, depth = 0, seen = {}) {
   seen[table.id] = true;
   const formula = table.formula ?? table.data.formula;
   const pRoll = new Roll(formula);
-  const die = game.release.isNewer("13")
+  const die = game.release.isNewer("12")
     ? await pRoll.roll()
     : await pRoll.roll({ async: true });
   await pRoll.toMessage(
@@ -123,7 +123,7 @@ async function rolltableRequesterMakeRoll(table) {
         cardTemplate,
         cardData,
       )
-    : renderTemplate(cardTemplate, cardData);
+    : await renderTemplate(cardTemplate, cardData);
   const drawChatData = {
     content: myHtml,
   };
